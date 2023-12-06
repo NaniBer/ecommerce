@@ -1,0 +1,60 @@
+//Sign up page
+import NavBar from "../Components/NavBar";
+import { useNavigate } from "react-router-dom";
+
+const SignUp = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  return (
+    <div>
+      <NavBar />
+      <div className="bg-pageBlue m-20 mb-0 rounded-xl p-20 flex">
+        <img
+          src={require("../Assets/loginPageImage.png")}
+          className="h-[600px]"
+          alt=""
+        />
+        <div className="flex flex-col items-center flex-1">
+          <p className="text-white text-semibold text-4xl mb-16">Sign Up</p>
+          <input
+            type="text"
+            placeholder="Full name"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+          />
+          <input
+            type="text"
+            placeholder="Email"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+          />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+          />
+          <input
+            type="text"
+            placeholder="Password"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent w-8/12   h-16"
+          />
+          <div className="flex flex-col justify-center items-center mt-10">
+            <button className="bg-buttonBlue w-56 text-white text-xl h-14 rounded-xl ">
+              Sign Up
+            </button>
+            <p className="mt-3 text-white text-lg">
+              Already have an account?{" "}
+              <span
+                className="text-orange-400 cursor-pointer hover:underline hover:underline-offset-4"
+                onClick={handleLogin}
+              >
+                Login
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default SignUp;
