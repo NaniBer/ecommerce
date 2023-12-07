@@ -1,8 +1,6 @@
 //This component lists all of the folders in a directory
-import { useLocation } from "react-router-dom";
 
 const FolderView = (props) => {
-  const location = useLocation();
   return (
     <div
       className="flex items-center justify-center mb-10 cursor-pointer"

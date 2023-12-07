@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import clickedFoldersReducer from "./clickedFolderReducer";
+import authReducer from "./Reducers/authReducer";
+import cartReducer from "./Reducers/cartReducer";
 
 const rootReducer = combineReducers({
-  clickedFolders: clickedFoldersReducer,
+  auth: authReducer,
+  cart: cartReducer,
 });
-
 export default rootReducer;

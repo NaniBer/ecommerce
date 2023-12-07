@@ -1,9 +1,13 @@
 //This page view all the necessary info of a file and only views one file
 import NavBar from "../Components/NavBar";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { addToCart } from "../Actions/cartActions";
+import Popup from "../Components/PopUp";
 const FileView = () => {
   const fileInfo = {
+    id: "12334e",
     name: "SM-A51 Screen Lock",
     date: "11/30/2023",
     fileSize: "10MB",
@@ -13,18 +17,43 @@ const FileView = () => {
       "SM-I9500 Remove screen lock? Password Pin Pattern Without lost of your important data. -I9500_UFNB4 I9500_UFNB4_REMOVE_SCREEN_LOCK_WITHOUT_LOSS_DATA.tar",
   };
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [folders, setFolders] = useState([]);
   const currentPath = location.state.currentPath;
-  console.log(currentPath);
+  const [showPopup, setShowPopup] = useState(false);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
   useEffect(() => {
     const arr = currentPath.split("/");
     arr.shift();
 
-    console.log(arr);
     setFolders(arr);
-    // setFolders(folders.slice(1));
+    setFolders(folders.slice(1));
   }, [currentPath]);
+
+  const handleAddToCart = (id) => {
+    if (isAuthenticated) {
+      console.log(id);
+      dispatch(addToCart());
+      setShowPopup(true);
+    } else {
+      // Retrieve the item details
+      const productID = id;
+      const quantity = 1;
+
+      // Store the item details in sessionStorage
+      const cartItem = { productID, quantity };
+      const cartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
+      cartItems.push(cartItem);
+      sessionStorage.setItem("cart", JSON.stringify(cartItems));
+      navigate("/login");
+    }
+  };
 
   return (
     <div>
@@ -67,7 +96,10 @@ const FileView = () => {
           </div>
         </div>
         <div className="w-full flex justify-center text-xl font-semibold">
-          <button className="bg-buttonBlue w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36">
+          <button
+            className="bg-buttonBlue w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36"
+            onClick={() => handleAddToCart(fileInfo.id)}
+          >
             <img src={require("../Assets/cart.png")} className="h-7 mr-5" />
             Add To Cart
           </button>
@@ -75,6 +107,7 @@ const FileView = () => {
             <img src={require("../Assets/cart.png")} className="h-7 mr-5" />
             Check out
           </button>
+          <div>{showPopup && <Popup onClose={closePopup} />}</div>
         </div>
       </div>
     </div>
