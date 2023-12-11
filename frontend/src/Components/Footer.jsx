@@ -1,13 +1,13 @@
 //This component view the footer with the contact info
 const Footer = () => {
   return (
-    <div className="flex justify-evenly pl-24 pr-24 mb-10">
+    <div className="flex justify-evenly pl-24 pr-24 mb-10 bg-pageBlue text-white">
       <div>
         <p className="text-left text-lg">LOGO</p>
         <div className="flex mt-16 space-x-6">
-          <img src={require("../Assets/facebook.png")} className="h-16" />
+          {/* <img src={require("../Assets/facebook.png")} className="h-16" />
           <img src={require("../Assets/instagram.png")} className="h-16" />
-          <img src={require("../Assets/whatsapp.png")} className="h-16" />
+          <img src={require("../Assets/whatsapp.png")} className="h-16" /> */}
         </div>
       </div>
       <div className="lg:block hidden">

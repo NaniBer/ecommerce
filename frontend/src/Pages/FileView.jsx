@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addToCart } from "../Actions/cartActions";
 import Popup from "../Components/PopUp";
+import { Icon } from "@iconify/react";
 const FileView = () => {
   const fileInfo = {
     id: "12334e",
@@ -31,14 +32,12 @@ const FileView = () => {
   useEffect(() => {
     const arr = currentPath.split("/");
     arr.shift();
-
     setFolders(arr);
-    setFolders(folders.slice(1));
-  }, [currentPath]);
+  }, []);
 
   const handleAddToCart = (id) => {
+    console.log(folders);
     if (isAuthenticated) {
-      console.log(id);
       dispatch(addToCart());
       setShowPopup(true);
     } else {
@@ -58,55 +57,58 @@ const FileView = () => {
   return (
     <div>
       <NavBar />
-      <div className="flex ml-24 mt-10 mb-10">
+      <div className="flex lg:ml-24 ml-10 mt-10 mb-10">
         {folders.map((folder, index) => (
           <p key={index} className="text-xl">
             {folder} {index !== folders.length - 1 && <span>/</span>} &nbsp;
           </p>
         ))}
       </div>
-      <div className="bg-pageBlue m-20 rounded-xl p-20 ">
-        <p className="text-5xl text-white font-semibold text-center">
+      <div className="bg-neutral-300 text-black lg:m-20 m-10 rounded-xl lg:p-20 p-10 ">
+        <p className="lg:text-5xl text-3xl font-semibold text-center">
           {fileInfo.name}
         </p>
-        <div className="flex text-2xl mt-20  ">
-          <div className="w-1/2">
-            <p className="text-white mb-16">
-              <span className="text-orange-400 mr-14">Date: </span>{" "}
+        <div className="lg:flex lg:text-2xl text-lg lg:mt-20 mt-10  ">
+          <div className="lg:w-1/2 lg:mr-0 mr-32">
+            <p className=" lg:mb-16 mb-10 flex lg:flex-col">
+              <span className="font-semibold lg:mr-14 mr-4">Date: </span>{" "}
               {fileInfo.date}
             </p>
-            <p className="text-white mb-16">
-              <span className="text-orange-400 mr-5">File Size: </span>
+            <p className="  lg:mb-16 mb-10">
+              <span className="font-semibold mr-5">File Size: </span>
               {fileInfo.fileSize}
             </p>
-            <p className="text-white mb-16">
-              <span className="text-orange-400 mr-14">Vistis:</span>{" "}
+            <p className=" lg:mb-16 mb-10">
+              <span className=" font-semibold lg:mr-14 mr-10">Vistis:</span>{" "}
               {fileInfo.visits}
             </p>
-            <p className="text-white mb-16 text-3xl font-semibold">
-              <span className="text-orange-400 text-2xl font-normal mr-14">
+            <p className=" lg:mb-16 mb-10 lg:text-3xl text-xl font-bold text-orange-400">
+              <span className="lg:text-2xl text-lg font-semibold lg:mr-14 mr-10 text-black">
                 Price:{" "}
               </span>
               {fileInfo.price} ETB
             </p>
           </div>
-          <div className="w-1/2 flex flex-col">
-            <span className="text-orange-400 ">Description:</span>{" "}
-            <p className="text-white">{fileInfo.description}</p>
+          <div className="lg:w-1/2 flex flex-col">
+            <span className="font-semibold lg:mb-0 mb-3 ">Description:</span>{" "}
+            <p className="">{fileInfo.description}</p>
           </div>
         </div>
-        <div className="w-full flex justify-center text-xl font-semibold">
+        <div className="w-full flex justify-center lg:text-xl text-base font-semibold lg:mt-0 mt-20">
           <button
-            className="bg-buttonBlue w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36"
+            className="bg-orange-400 lg:w-56  w-40 flex justify-center items-center text-white lg:h-16 h-10 rounded-xl lg:mr-36 mr-10"
             onClick={() => handleAddToCart(fileInfo.id)}
           >
-            <img src={require("../Assets/cart.png")} className="h-7 mr-5" />
+            <Icon icon="mdi:cart" width="30" height="30" className="mr-5" />
             Add To Cart
           </button>
-          <button className="bg-buttonBlue w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36">
-            <img src={require("../Assets/cart.png")} className="h-7 mr-5" />
+          {/* <button className="bg-buttonBlue lg:w-56 w-40 flex justify-center items-center text-white lg:h-16 h-10 rounded-xl lg:mr-36 mr-10">
+            <img
+              src={require("../Assets/cart.png")}
+              className="g:h-7 h-6 mr-3 lg:mr-5"
+            />
             Check out
-          </button>
+          </button> */}
           <div>{showPopup && <Popup onClose={closePopup} />}</div>
         </div>
       </div>

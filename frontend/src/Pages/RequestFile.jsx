@@ -4,48 +4,50 @@ const RequestFile = () => {
   return (
     <div>
       <NavBar />
-      <div className="ml-24 mt-10 mb-10 mr-24">
-        <p className="text-2xl">Services / Request File</p>
-        <div className="bg-pageBlue mt-14 rounded-xl p-20 pb-10 text-white">
-          <p className="text-4xl text-center mb-3 font-semibold">
+      <div className="lg:ml-24 ml-10 mt-10 mb-10 mr-24 text-pageBlue">
+        <p className="lg:text-2xl text-xl text-pageBlue">
+          Services / Request File
+        </p>
+        <div className="bg-neutral-300 mt-14 rounded-xl lg:p-20 p-10 lg:pr-20 pr-20 pb-10 ">
+          <p className="lg:text-4xl text-2xl text-center mb-3 font-bold">
             Request File
           </p>
-          <p className="text-center mb-16 text-xl font-light">
+          <p className="text-center mb-16 lg:text-xl ">
             If you need a special file, use the below form to send us your
             requests
           </p>
           <div>
-            <form className="flex justify-center flex-col text-lg">
-              <div className="grid grid-cols-2">
+            <form className="flex justify-center flex-col lg:text-lg ">
+              <div className="grid lg:grid-cols-2">
                 <input
                   type="text"
                   placeholder="Full Name"
-                  className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent  h-16 mb-10"
+                  className="placeholder-gray-600 ml-9 pl-9 focus:outline-none border-pageBlue border-2 rounded-lg bg-transparent h-16 mb-10 "
                 />
                 <input
                   type="text"
                   placeholder="Email"
-                  className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent  h-16 mb-10"
+                  className="placeholder-gray-600 ml-9 pl-9 focus:outline-none border-pageBlue border-2 rounded-lg bg-transparent  h-16 mb-10"
                 />
                 <input
                   type="text"
                   placeholder="Phone number"
-                  className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 mb-10"
+                  className="placeholder-gray-600 ml-9 pl-9 focus:outline-none border-pageBlue border-2 rounded-lg bg-transparent h-16 mb-10"
                 />
                 <input
                   type="text"
                   placeholder="File Request Subject"
-                  className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent   h-16"
+                  className="placeholder-gray-600 ml-9 pl-9 focus:outline-none border-pageBlue border-2 rounded-lg bg-transparent   h-16"
                 />
               </div>
               <textarea
-                cols="200"
+                cols="40"
                 rows="10"
                 placeholder="File Request Message"
-                className="ml-9 pl-9 pt-6 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent w-fit mr-24"
+                className=" placeholder-gray-600 ml-9 pl-9 pt-6 focus:outline-none border-pageBlue border-2 rounded-lg bg-transparent w-fit mr-24 lg:mt-0 mt-10 sm:cols-30 lg:cols-60"
               />
-              <div className="flex justify-center items-center mt-10">
-                <button className="bg-buttonBlue w-56 justify-self-center text-white h-14 rounded-xl mr-36">
+              <div className="flex justify-end w-full items-center mt-10 ">
+                <button className="bg-orange-400 lg:w-56 w-44 justify-self-center text-white lg:h-14 h-10 rounded-xl">
                   Send request
                 </button>
               </div>

@@ -1,4 +1,5 @@
 //Sign up page
+import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import { useNavigate } from "react-router-dom";
 
@@ -10,39 +11,41 @@ const SignUp = () => {
   return (
     <div>
       <NavBar />
-      <div className="bg-pageBlue m-20 mb-0 rounded-xl p-20 flex">
+      <div className="bg-pageBlue m-20 rounded-xl lg:p-20 p-10 pr-20 lg:pr-0 flex">
         <img
           src={require("../Assets/loginPageImage.png")}
-          className="h-[600px]"
+          className="h-[600px] lg:flex hidden"
           alt=""
         />
-        <div className="flex flex-col items-center flex-1">
-          <p className="text-white text-semibold text-4xl mb-16">Sign Up</p>
+        <div className="lg:flex flex-col items-center lg:flex-1">
+          <p className=" text-semibold text-4xl lg:mb-36 mb-24 text-cente text-white">
+            Sign Up
+          </p>
           <input
             type="text"
             placeholder="Full name"
-            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent lg:h-16 h-14 lg:w-8/12 lg:mb-16 mb-10 w-full"
           />
           <input
             type="text"
             placeholder="Email"
-            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent lg:h-16 h-14 lg:w-8/12 lg:mb-16 mb-10 w-full"
           />
           <input
             type="text"
             placeholder="Phone Number"
-            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent h-16 w-8/12 mb-16"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent lg:h-16 h-14 lg:w-8/12 lg:mb-16 mb-10 w-full"
           />
           <input
             type="text"
             placeholder="Password"
-            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent w-8/12   h-16"
+            className="ml-9 pl-9 focus:outline-none border-orange-400 border-2 rounded-lg bg-transparent lg:h-16 h-14 lg:w-8/12 lg:mb-16 mb-10 w-full"
           />
-          <div className="flex flex-col justify-center items-center mt-10">
-            <button className="bg-buttonBlue w-56 text-white text-xl h-14 rounded-xl ">
+          <div className="flex flex-col justify-center items-center lg:mt-10 mt-5">
+            <button className="bg-buttonBlue lg:w-56 w-32 lg:text-2xl lg:h-14 h-10  rounded-xl text-white  ">
               Sign Up
             </button>
-            <p className="mt-3 text-white text-lg">
+            <p className="mt-3 lg:text-lg text-white">
               Already have an account?{" "}
               <span
                 className="text-orange-400 cursor-pointer hover:underline hover:underline-offset-4"
@@ -54,6 +57,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

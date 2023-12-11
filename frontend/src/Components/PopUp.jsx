@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Icon } from "@iconify/react";
 const Popup = ({ onClose }) => {
   const navigate = useNavigate();
   return (
@@ -10,12 +10,21 @@ const Popup = ({ onClose }) => {
           className="absolute top-2 right-2  text-gray-500"
           onClick={onClose}
         >
-          <img src={require("../Assets/blueClose.png")} className="h-6" />
+          <Icon
+            icon="mdi:close-circle-outline"
+            color="#384461"
+            width="24"
+            height="24"
+            className="cursor-pointer"
+          />
         </button>
         <p className="flex text-2xl w-full text-center mt-5">
-          <img
-            src={require("../Assets/blueCheckBox.png")}
-            className="h-12 mr-7"
+          <Icon
+            icon="mdi:check-circle"
+            color="#384461"
+            width="54"
+            height="54"
+            className="mr-5"
           />
           Item Successfully added to cart!
         </p>

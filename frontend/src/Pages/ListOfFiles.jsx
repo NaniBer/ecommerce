@@ -56,9 +56,8 @@ const ListOfFiles = () => {
   ];
 
   return (
-    <div className="bg-neutral-300 ">
-      <p className="w-full text-center pt-10 text-2xl">Recent files</p>
-      <div className="px-24 pt-14 flex items-center justify-center">
+    <div className=" ">
+      <div className="px-24 pt-14 lg:flex  items-center justify-center">
         {files.map((file) => (
           <BoxWithInfo
             title={file.title}
@@ -67,7 +66,10 @@ const ListOfFiles = () => {
           />
         ))}
       </div>
-      <div className="grid grid-cols-2 mx-auto mb-10">
+      <p className="w-full text-center pt-10 text-3xl text-orange-400 font-semibold mb-10">
+        Recent files
+      </p>
+      <div className="grid lg:grid-cols-2 mx-auto lg:mb-10 mb-20">
         {folderNames.map((folder) => (
           <div onClick={() => folderClicked(folder.name)}>
             <FolderView

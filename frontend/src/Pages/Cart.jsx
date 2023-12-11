@@ -9,6 +9,7 @@ import { addToCart, deleteFromCart, emptyCart } from "../Actions/cartActions";
 import { useNavigate } from "react-router-dom";
 import EmptyCartPopup from "../Components/EmptyCartPopup";
 import DeleteItemPopup from "../Components/DeleteItemPopup";
+import { Icon } from "@iconify/react";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -123,13 +124,13 @@ const Cart = () => {
         <NavBar />
 
         <div className="bg-pageBlue m-20 mb-0 rounded-xl p-20 flex flex-col ">
-          <p className="text-white text-semibold text-4xl mb-16 w-full text-center">
+          <p className="text-white text-semibold lg:text-4xl text-3xl mb-16 w-full text-center">
             Shopping Cart
           </p>
           <div className="flex flex-col justify-center items-center">
-            <table className="text-white w-full ">
+            <table className="text-white w-full">
               <thead className="border-b-8 border-pageBlue">
-                <tr className="text-orange-400 text-2xl ">
+                <tr className="text-orange-400 lg:text-2xl text-sm ">
                   <th className="p-2 text-left">Item</th>
                   <th className="p-2">Price</th>
                   <th className="p-2">Quantity</th>
@@ -138,12 +139,14 @@ const Cart = () => {
                   <th className="p-2">Total</th>
                 </tr>
               </thead>
-              <tbody className="text-xl ">
+              <tbody className="lg:text-xl text-xs ">
                 {itemsList.map((item, index) => (
                   <tr key={index} className="border-b-2 border-buttonBlue ">
-                    <td className="p-2 py-12">{item.name}</td>
-                    <td className="p-2 text-center pb-12">{item.price}</td>
-                    <td className="p-2 pb-12 ">
+                    <td className="p-2 lg:py-12 py-8">{item.name}</td>
+                    <td className="p-2 text-center lg:pb-12 pb-8">
+                      {item.price}
+                    </td>
+                    <td className="p-2 lg:pb-12 pb-8">
                       <div className="flex items-center justify-center">
                         <button
                           className="px-2 mr-3 py-1 bg-buttonBlue rounded-l text-white"
@@ -172,17 +175,22 @@ const Cart = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="p-2 text-center pb-12">
+                    <td className="p-2 text-center lg:pb-12 pb-8">
                       {item.subtotal} Birr
                     </td>
-                    <td className="p-2 text-center pb-12">
+                    <td className="p-2 text-center lg:pb-12 pb-8">
                       {item.discount} Birr
                     </td>
-                    <td className="p-2 text-center pb-12">{item.total} Birr</td>
-                    <td className="p-2 text-center pb-12 ">
-                      <img
-                        src={require("../Assets/delete.png")}
-                        className="h-7 cursor-pointer"
+                    <td className="p-2 text-center lg:pb-12 pb-8">
+                      {item.total} Birr
+                    </td>
+                    <td className="p-2 text-center lg:pb-12 pb-8 ">
+                      <Icon
+                        icon="mdi:delete-forever"
+                        color="#fe8719"
+                        width="24"
+                        height="54"
+                        className="cursor-pointer"
                         onClick={handleRemoveItem}
                       />
                       {showPopupItem && (
@@ -200,36 +208,43 @@ const Cart = () => {
             </table>
             <div className="w-full flex flex-col items-end justify-end mt-20">
               <div className="space-y-4 mr-20">
-                <p className="text-xl text-white ">
+                <p className="lg:text-xl text-white ">
                   <span className="font-semibold mr-16">Subtotal</span>
                   {generalInfo.subtotal} Birr
                 </p>
-                <p className="text-xl text-white ">
+                <p className="lg:text-xl text-white ">
                   <span className="font-semibold mr-28">Taxes</span>
                   {generalInfo.taxes} Birr
                 </p>
-                <p className="text-2xl text-orange-400 font-bold  ">
-                  <span className="font-semibold mr-20 text-xl">Total</span>
+                <p className="lg:text-2xl text-xl text-orange-400 font-bold  ">
+                  <span className="font-semibold mr-20 lg:text-xl text-base">
+                    Total
+                  </span>
                   {generalInfo.total} Birr
                 </p>
               </div>
             </div>
-            <div className="flex">
+            <div className="flex lg:mt-0 mt-10">
               <button
-                className="bg-buttonBlue text-xl w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36"
+                className="bg-buttonBlue lg:text-xl lg:w-56 w-36 flex justify-center items-center text-white lg:h-16 h-14 rounded-xl lg:mr-36 mr-20"
                 onClick={handleEmptyCart}
               >
-                <img
-                  src={require("../Assets/whiteEmptyCart.png")}
-                  className="h-7 mr-2"
+                <Icon
+                  icon="mdi:cart-remove"
+                  width="24"
+                  height="54"
+                  className="mr-5"
                 />
                 Empty Cart
               </button>
 
-              <button className="bg-buttonBlue text-xl w-56 flex justify-center items-center text-white h-16 rounded-xl mr-36">
-                <img
-                  src={require("../Assets/checkButton.png")}
-                  className="h-7 mr-2"
+              <button className="bg-buttonBlue lg:text-xl lg:w-56 w-44 flex justify-center items-center text-white lg:h-16 h-14 rounded-xl lg:mr-36">
+                <Icon
+                  icon="mdi:check-circle"
+                  color="white"
+                  width="24"
+                  height="54"
+                  className="mr-5"
                 />
                 Confirm Order
               </button>
@@ -257,8 +272,8 @@ const Cart = () => {
           <p className="text-white text-semibold text-4xl mb-16 w-full text-center">
             Shopping Cart
           </p>
-          <div className="flex justify-center items-center h-full text-white text-4xl font-light">
-            <img src={require("../Assets/cart.png")} className="h-18 mr-4" />
+          <div className="flex justify-center items-center h-full text-white lg:text-4xl text-2xl font-light">
+            <Icon icon="mdi:cart" width="50" height="54" className="mr-5" />
             <p>Cart is currently empty</p>
           </div>
         </div>

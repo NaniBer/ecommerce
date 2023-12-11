@@ -5,6 +5,7 @@ import FileOverview from "../Components/FileOverview";
 import NavBar from "../Components/NavBar";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 const FolderDetails = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const FolderDetails = () => {
       price: 300,
       description:
         "SM-I9500 Remove screen lock? Password Pin Pattern Without lost of your important data. -I9500_UFNB4 I9500_UFNB4_REMOVE_SCREEN_LOCK_WITHOUT_LOSS_DATA.tar",
+      type: "file",
     },
     {
       id: "12ee3",
@@ -68,7 +70,8 @@ const FolderDetails = () => {
       const newPath = `${currentPath}/${folder.name}`;
       window.location.href = newPath;
     } else if (folder.type == "file") {
-      navigate(`/file/${folder.id}`, { state: { currentPath: currentPath } });
+      console.log(currentPath);
+      // navigate(`/file/${folder.id}`, { state: { currentPath: currentPath } });
     }
   };
   if (type == "folder") {
@@ -83,13 +86,13 @@ const FolderDetails = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 mx-auto mb-10">
-          <div className="flex mx-96 mb-16">
+        <div className="grid lg:grid-cols-2 mx-auto mb-10">
+          <div className="flex lg:mx-96 mx-20 mb-16">
             <div>
-              <p className="text-left text-5xl mb-2 font-semibold">
+              <p className="text-left lg:text-5xl text-3xl mb-2 font-semibold">
                 {folders.slice(-1)}
               </p>
-              <p className="text-lg">{description}</p>
+              <p className="lg:text-lg text-base">{description}</p>
             </div>
           </div>
           <div></div>
@@ -118,28 +121,32 @@ const FolderDetails = () => {
         </div>
 
         <div className="">
-          <div className="flex mx-24 mb-6">
+          <div className="flex lg:mx-24 mx-10 mb-6">
             <div>
-              <p className="text-left text-5xl mb-2 font-semibold">
+              <p className="text-left lg:text-5xl text-2xl mb-2 font-semibold">
                 {folders.slice(-1)}
               </p>
-              <p className="text-lg">{description}</p>
+              <p className="lg:text-lg text-base">{description}</p>
             </div>
           </div>
-          <div className="flex justify-end mr-24 mb-10 relative ">
-            <div className="flex border-2 border-buttonBlue rounded-xl mr-10 justify-center items-center cursor-pointer">
+          <div className="flex lg:justify-end lg:mr-24 mb-10 lg:ml-0 ml-10 relative ">
+            <div className="flex flex-1 border-2 border-buttonBlue rounded-xl mr-10 justify-center items-center cursor-pointer lg:flex-none">
               <input
-                className="focus:outline-none pl-5 cursor-pointer"
+                className="focus:outline-none pl-5 cursor-pointer flex-1 "
                 placeholder="Name"
                 value={sortOption}
                 onClick={handleSortToggleDropdown}
                 readOnly
               ></input>
-              <img
-                src={require("../Assets/down-arrow.png")}
-                className="h-7 mr-5 cursor-pointer"
+              <Icon
+                icon="mdi:arrow-down-drop-circle-outline"
+                color="#384461"
+                width="24"
+                height="54"
                 onClick={handleSortToggleDropdown}
+                className="mr-3 cursor-pointer"
               />
+
               {isSortDropdownOpen && (
                 <ul className="absolute top-full bg-white text-black rounded-lg py-2 px-4 w-52 border-2 shadow-lg space-y-3">
                   <li
@@ -169,17 +176,17 @@ const FolderDetails = () => {
                 </ul>
               )}
             </div>
-            <button className="bg-buttonBlue w-44 flex justify-center items-center text-white h-12 rounded-xl text-lg ">
-              <img
-                src={require("../Assets/sort.png")}
-                className="h-7 mr-5 cursor-pointer"
-              />
+            <button className="bg-buttonBlue lg:w-44 w-32 flex justify-center items-center text-white h-12 rounded-xl lg:text-lg text-base lg:mr-0 mr-10">
+              <Icon icon="mdi:sort" width="24" height="54" className="mr-5" />
               Sort
             </button>
           </div>
 
           {folderNames.map((folder) => (
-            <div onClick={() => folderClicked(folder)} className="ml-24">
+            <div
+              onClick={() => folderClicked(folder)}
+              className="lg:ml-24 ml-10"
+            >
               <FileOverview
                 id={folder.id}
                 name={folder.name}
